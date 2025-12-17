@@ -540,7 +540,7 @@ body.mode-main {
     overflow-y: auto;
     overflow-x: hidden;
     /* BRUTE FORCE HEIGHT: Ensuring scrollbar appears */
-    height: 650vh;
+    height: 800vh;
     min-height: 100vh;
     background: url('bg_holo.png') no-repeat center center fixed;
     background-size: cover;
