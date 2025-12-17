@@ -584,7 +584,7 @@ body.mode-intro .orb {
 body.mode-greeting .orb {
     animation: float 20s infinite ease-in-out;
     transition: all 2s ease;
-    opacity: 0.5;
+    opacity: 0;
     filter: blur(10px);
 }
 
