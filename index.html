@@ -8,11 +8,11 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=56">
+    <link rel="stylesheet" href="style.css?v=58">
 </head>
 
 <body>
-    <!-- Build v56: Gallery UX Improvements (Prev Button, Contain Fit) -->
+    <!-- Build v58: Added item-2 images and gallery -->
     <!-- Intro Overlay -->
     <!-- Intro Overlay -->
     <div id="intro-overlay">
@@ -83,11 +83,12 @@
                         <p>Product Sketch</p>
                     </div>
                 </article>
-                <article class="work-item item-2">
-                    <div class="card-image"></div>
+                <article class="work-item item-2" onclick="openGallery(this)"
+                    data-images="['work2_1.png', 'work2_2.png']" style="cursor: pointer;">
+                    <div class="card-image" style="background-image: url('work2_1.png');"></div>
                     <div class="card-info">
-                        <h3>Mobile App</h3>
-                        <p>Travel Planner</p>
+                        <h3>G-Shock Inspired Vacuum</h3>
+                        <p>Concept Art</p>
                     </div>
                 </article>
                 <article class="work-item item-3">
