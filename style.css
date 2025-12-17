@@ -552,15 +552,9 @@ body.mode-main {
     /* Enable scrolling */
     overflow-x: hidden;
     height: auto;
-    /* Clean Studio Background inspired by reference */
-    /* Rich Holographic Background matching reference */
-    background-color: #f4f7fd;
-    background-image:
-        radial-gradient(at 10% 20%, hsla(259, 84%, 78%, 0.4) 0px, transparent 50%),
-        radial-gradient(at 90% 10%, hsla(205, 87%, 76%, 0.4) 0px, transparent 50%),
-        radial-gradient(at 20% 80%, hsla(326, 82%, 79%, 0.4) 0px, transparent 50%),
-        radial-gradient(at 80% 90%, hsla(271, 91%, 74%, 0.4) 0px, transparent 50%);
-    background-attachment: fixed;
+    /* Using actual background image as requested */
+    background: url('background.png') no-repeat center center fixed;
+    background-size: cover;
     /* Keep background static while scrolling */
 }
 
