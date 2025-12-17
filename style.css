@@ -539,7 +539,8 @@ html {
 body.mode-main {
     overflow-y: auto;
     overflow-x: hidden;
-    height: auto;
+    /* BRUTE FORCE HEIGHT: Ensuring scrollbar appears */
+    height: 650vh;
     min-height: 100vh;
     background: url('bg_holo.png') no-repeat center center fixed;
     background-size: cover;
@@ -594,13 +595,12 @@ body.mode-main .background-container {
     top: 0;
     left: 0;
     width: 100%;
-    /* Increase height to push items further apart and down */
-    height: 400vh;
+    /* Inherit brute force height */
+    height: 100%;
     margin-top: 30vh;
     perspective: 2000px;
     z-index: 10;
     overflow: visible;
-    /* Massive bottom cushion to absolutely prevent clipping */
     padding-bottom: 250vh;
 }
 
