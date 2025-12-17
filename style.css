@@ -639,7 +639,12 @@ body.mode-main .orb {
         20px 20px 60px rgba(0, 0, 0, 0.1),
         inset 0 0 0 1px rgba(255, 255, 255, 0.5);
     border: 1px solid rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.2);
     transform-style: preserve-3d;
+    backface-visibility: hidden;
+    /* Fixes jagged edges/flickering */
+    will-change: transform;
+    /* Optimizes rendering performance */
     cursor: pointer;
     pointer-events: auto;
     transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1), background 0.3s;
@@ -829,9 +834,88 @@ body.mode-main .hero-visuals {
     box-shadow:
         0 60px 120px rgba(0, 0, 0, 0.3),
         inset 0 0 0 1px rgba(255, 255, 255, 0.9);
-    /* straighten out to face user */
-    transform: translate3d(0, 0, 450px) rotateX(0) rotateY(0) scale(1.05) !important;
+    /* straighten out to face user, reduced Z to prevent clipping/distortion glitches */
+    transform: translate3d(0, 0, 300px) rotateX(0) rotateY(0) scale(1.05) !important;
     animation-play-state: paused;
+}
+
+/* DECORATIVE SPARKLES & LINES */
+.work-item::before {
+    content: "✦";
+    position: absolute;
+    font-size: 2rem;
+    color: #fff;
+    text-shadow: 0 0 10px rgba(142, 197, 252, 0.8), 0 0 20px rgba(224, 195, 252, 0.8);
+    opacity: 0.8;
+    pointer-events: none;
+    animation: sparkleTwinkle 3s infinite ease-in-out alternate;
+    z-index: 2;
+}
+
+/* Distinct positions for sparkles */
+.item-1::before {
+    top: -20px;
+    right: -20px;
+    font-size: 2.5rem;
+    animation-delay: 0s;
+}
+
+.item-2::before {
+    bottom: -30px;
+    left: -20px;
+    font-size: 3rem;
+    animation-delay: 0.5s;
+    color: #ffd700;
+}
+
+.item-3::before {
+    top: 50%;
+    right: -40px;
+    font-size: 2rem;
+    animation-delay: 1s;
+}
+
+.item-4::before {
+    top: -30px;
+    left: 10px;
+    font-size: 2.2rem;
+    animation-delay: 1.5s;
+}
+
+.item-5::before {
+    bottom: 10px;
+    right: -30px;
+    font-size: 1.8rem;
+    animation-delay: 0.2s;
+    color: #8ec5fc;
+}
+
+.item-6::before {
+    top: -10px;
+    right: 50%;
+    font-size: 2.5rem;
+    animation-delay: 0.8s;
+}
+
+.item-7::before {
+    bottom: 30%;
+    left: -30px;
+    font-size: 2.8rem;
+    animation-delay: 1.2s;
+    color: #e0c3fc;
+}
+
+@keyframes sparkleTwinkle {
+    0% {
+        transform: scale(0.8) rotate(0deg);
+        opacity: 0.5;
+    }
+
+    100% {
+        transform: scale(1.2) rotate(20deg);
+        opacity: 1;
+        text-shadow: 0 0 30px rgba(255, 255, 255, 1);
+    }
 }
 
 /* Initial Entry */
