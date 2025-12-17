@@ -8,11 +8,11 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=55">
+    <link rel="stylesheet" href="style.css?v=56">
 </head>
 
 <body>
-    <!-- Build v55: Maximized Modal Image Size -->
+    <!-- Build v56: Gallery UX Improvements (Prev Button, Contain Fit) -->
     <!-- Intro Overlay -->
     <!-- Intro Overlay -->
     <div id="intro-overlay">
@@ -139,6 +139,7 @@
     <!-- Image Gallery Modal -->
     <div id="image-modal" class="modal hidden">
         <span class="close-modal" onclick="closeGallery()">&times;</span>
+        <a class="prev-btn" onclick="prevImage()">&#10094;</a>
         <img class="modal-content" id="modal-image">
         <a class="next-btn" onclick="nextImage()">&#10095;</a>
     </div>

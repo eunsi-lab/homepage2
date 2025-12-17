@@ -92,10 +92,14 @@ window.nextImage = function () {
     showImage(currentImageIndex);
 };
 
+window.prevImage = function () {
+    currentImageIndex = (currentImageIndex - 1 + currentImages.length) % currentImages.length;
+    showImage(currentImageIndex);
+};
+
 function showImage(index) {
     const imgPath = currentImages[index];
     modalImg.src = imgPath;
-    // Log for debugging
     console.log("Showing image:", imgPath);
 }
 
@@ -105,3 +109,16 @@ window.onclick = function (event) {
         window.closeGallery();
     }
 }
+
+// Keyboard Navigation
+document.addEventListener('keydown', function (event) {
+    if (!modal.classList.contains('show')) return;
+
+    if (event.key === "Escape") {
+        window.closeGallery();
+    } else if (event.key === "ArrowRight") {
+        window.nextImage();
+    } else if (event.key === "ArrowLeft") {
+        window.prevImage();
+    }
+});
