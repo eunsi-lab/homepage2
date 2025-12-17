@@ -1193,7 +1193,8 @@ body.mode-main .item-7 {
     font-weight: bold;
     cursor: pointer;
     transition: 0.3s;
-    z-index: 10001;
+    z-index: 1000001;
+    pointer-events: auto !important;
 }
 
 .close-modal:hover {
