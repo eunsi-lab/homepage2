@@ -658,16 +658,22 @@ body.mode-main .orb {
     margin-top: 5px;
 }
 
-/* --- SCATTERED POSITIONS (BIGGER & MORE TILTED) --- */
+/* Hide Hero Content in Main Mode as well */
+body.mode-main .hero-content,
+body.mode-main .hero-visuals {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s ease;
+}
+
+/* --- SCATTERED POSITIONS (7 ITEMS - BIGGER & MORE TILTED) --- */
 
 /* 1. Top Left - Medium */
 .item-1 {
-    width: 450px;
-    /* Much Bigger */
-    height: 320px;
-    top: 15%;
-    left: 8%;
-    /* Strong Tilt */
+    width: 400px;
+    height: 280px;
+    top: 10%;
+    left: 5%;
     transform: rotateY(35deg) rotateX(15deg) translateZ(0);
     animation: drift1 14s ease-in-out infinite alternate;
 }
@@ -682,14 +688,12 @@ body.mode-main .orb {
     }
 }
 
-/* 2. Bottom Right - Large */
+/* 2. Bottom Right - Huge */
 .item-2 {
-    width: 550px;
-    /* Huge */
-    height: 400px;
-    bottom: 15%;
+    width: 500px;
+    height: 350px;
+    bottom: 5%;
     right: 5%;
-    /* Opposite Tilt */
     transform: rotateY(-35deg) rotateX(10deg) translateZ(-50px);
     animation: drift2 18s ease-in-out infinite alternate-reverse;
 }
@@ -706,8 +710,8 @@ body.mode-main .orb {
 
 /* 3. Top Right - Vertical Strip */
 .item-3 {
-    width: 320px;
-    height: 450px;
+    width: 300px;
+    height: 400px;
     top: 5%;
     right: 15%;
     transform: rotateY(-25deg) rotateX(-15deg) translateZ(50px);
@@ -726,10 +730,10 @@ body.mode-main .orb {
 
 /* 4. Bottom Left - Wide */
 .item-4 {
-    width: 480px;
-    height: 300px;
+    width: 450px;
+    height: 280px;
     bottom: 15%;
-    left: 15%;
+    left: 10%;
     transform: rotateY(25deg) rotateX(-10deg) translateZ(-20px);
     animation: drift4 20s ease-in-out infinite alternate-reverse;
 }
@@ -741,6 +745,69 @@ body.mode-main .orb {
 
     100% {
         transform: translate3d(30px, 30px, 20px) rotateY(20deg) rotateX(-5deg);
+    }
+}
+
+/* 5. Center Top - Deep Back */
+.item-5 {
+    width: 350px;
+    height: 250px;
+    top: 15%;
+    left: 40%;
+    /* slightly center */
+    transform: rotateY(5deg) rotateX(25deg) translateZ(-150px);
+    animation: drift5 22s ease-in-out infinite alternate;
+    z-index: 1;
+}
+
+@keyframes drift5 {
+    0% {
+        transform: translate3d(0, 0, -150px) rotateY(5deg) rotateX(25deg);
+    }
+
+    100% {
+        transform: translate3d(0, 50px, -100px) rotateY(10deg) rotateX(20deg);
+    }
+}
+
+/* 6. Center Bottom - Floating Up */
+.item-6 {
+    width: 380px;
+    height: 300px;
+    bottom: 10%;
+    left: 50%;
+    margin-left: -190px;
+    transform: rotateY(-10deg) rotateX(-20deg) translateZ(20px);
+    animation: drift6 17s ease-in-out infinite alternate-reverse;
+}
+
+@keyframes drift6 {
+    0% {
+        transform: translate3d(0, 0, 20px) rotateY(-10deg) rotateX(-20deg);
+    }
+
+    100% {
+        transform: translate3d(40px, -40px, 60px) rotateY(-5deg) rotateX(-15deg);
+    }
+}
+
+/* 7. Far Left - Vertical */
+.item-7 {
+    width: 250px;
+    height: 350px;
+    top: 35%;
+    left: 2%;
+    transform: rotateY(45deg) rotateX(5deg) translateZ(-50px);
+    animation: drift7 19s ease-in-out infinite alternate;
+}
+
+@keyframes drift7 {
+    0% {
+        transform: translate3d(0, 0, -50px) rotateY(45deg) rotateX(5deg);
+    }
+
+    100% {
+        transform: translate3d(10px, -30px, 0px) rotateY(40deg) rotateX(0deg);
     }
 }
 
@@ -779,7 +846,19 @@ body.mode-main .item-4 {
     animation: popIn4 1s cubic-bezier(0.3, 1, 0.3, 1) forwards 0.8s, drift4 20s ease-in-out infinite alternate-reverse 1.8s;
 }
 
-/* Pop-in keyframes ensuring they start from their persistent tilt angle */
+body.mode-main .item-5 {
+    animation: popIn5 1s cubic-bezier(0.3, 1, 0.3, 1) forwards 1.0s, drift5 22s ease-in-out infinite alternate 2.0s;
+}
+
+body.mode-main .item-6 {
+    animation: popIn6 1s cubic-bezier(0.3, 1, 0.3, 1) forwards 1.2s, drift6 17s ease-in-out infinite alternate-reverse 2.2s;
+}
+
+body.mode-main .item-7 {
+    animation: popIn7 1s cubic-bezier(0.3, 1, 0.3, 1) forwards 1.4s, drift7 19s ease-in-out infinite alternate 2.4s;
+}
+
+/* Pop-in keyframes */
 @keyframes popIn1 {
     from {
         opacity: 0;
@@ -825,5 +904,41 @@ body.mode-main .item-4 {
     to {
         opacity: 1;
         transform: translate3d(0, 0, -20px) rotateY(25deg) rotateX(-10deg);
+    }
+}
+
+@keyframes popIn5 {
+    from {
+        opacity: 0;
+        transform: translate3d(0, -100px, -400px) rotateX(45deg);
+    }
+
+    to {
+        opacity: 1;
+        transform: translate3d(0, 0, -150px) rotateY(5deg) rotateX(25deg);
+    }
+}
+
+@keyframes popIn6 {
+    from {
+        opacity: 0;
+        transform: translate3d(0, 200px, -100px) rotateX(-45deg);
+    }
+
+    to {
+        opacity: 1;
+        transform: translate3d(0, 0, 20px) rotateY(-10deg) rotateX(-20deg);
+    }
+}
+
+@keyframes popIn7 {
+    from {
+        opacity: 0;
+        transform: translate3d(-100px, 0, -200px) rotateY(60deg);
+    }
+
+    to {
+        opacity: 1;
+        transform: translate3d(0, 0, -50px) rotateY(45deg) rotateX(5deg);
     }
 }
