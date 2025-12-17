@@ -597,8 +597,8 @@ body.mode-main .background-container {
     top: 0;
     left: 0;
     width: 100%;
-    /* Inherit brute force height - HARDCODED for safety */
-    height: 800vh;
+    /* HARDCODED height to 550vh for balanced spacing (not too wide, not too narrow) */
+    height: 550vh;
     margin-top: 30vh;
     perspective: 2000px;
     z-index: 10;
