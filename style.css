@@ -826,8 +826,8 @@ body.mode-main .item-7 {
 /* CLOSING MESSAGE */
 .closing-message {
     position: absolute;
-    /* Smart Position: 92% (Item 7 top) + 400px (Item height + gap) */
-    top: calc(92% + 400px);
+    /* Smart Position: 92% (Item 7 top) + 350px (Item height exactly) + small buffer handled by padding */
+    top: calc(92% + 350px);
     left: 0;
     width: 100%;
     text-align: center;
