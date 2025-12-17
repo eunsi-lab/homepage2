@@ -1156,6 +1156,13 @@ body.mode-main .item-7 {
     pointer-events: auto !important;
 }
 
+.modal-content,
+.close-modal,
+.next-btn {
+    pointer-events: auto !important;
+    z-index: 1000000;
+}
+
 .modal-content {
     max-width: 80%;
     max-height: 80%;
