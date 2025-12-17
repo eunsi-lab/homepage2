@@ -823,6 +823,55 @@ body.mode-main .item-7 {
     animation: popIn7 1s cubic-bezier(0.3, 1, 0.3, 1) forwards 0.7s, drift7 19s ease-in-out infinite alternate 1.7s;
 }
 
+/* CLOSING MESSAGE */
+.closing-message {
+    position: absolute;
+    bottom: 2%;
+    /* Sits at the very bottom of the 650vh container */
+    left: 0;
+    width: 100%;
+    text-align: center;
+    color: #333;
+    padding: 4rem 2rem;
+    pointer-events: auto;
+    z-index: 50;
+}
+
+.closing-message h2 {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    background: linear-gradient(45deg, #333, #666);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.closing-message p {
+    font-size: 1.5rem;
+    color: #666;
+    margin-bottom: 3rem;
+}
+
+.contact-link {
+    display: inline-block;
+    padding: 1rem 3rem;
+    background: rgba(255, 255, 255, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    border-radius: 50px;
+    font-size: 1.2rem;
+    color: var(--primary-color);
+    text-decoration: none;
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+}
+
+.contact-link:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    background: rgba(255, 255, 255, 0.9);
+}
+
 /* Keyframes Drift */
 @keyframes drift1 {
     0% {
