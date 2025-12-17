@@ -826,14 +826,15 @@ body.mode-main .item-7 {
 /* CLOSING MESSAGE */
 .closing-message {
     position: absolute;
-    bottom: 2%;
-    /* Sits at the very bottom of the 650vh container */
+    /* Explicitly place BELOW the last item (Item 7 is at ~92% of 650vh = ~598vh) */
+    top: 610vh;
     left: 0;
     width: 100%;
     text-align: center;
     color: #333;
     padding: 4rem 2rem;
-    pointer-events: auto;
+    /* CRITICAL FIX: Allow clicks to pass through the text container so cards behind it work */
+    pointer-events: none;
     z-index: 50;
 }
 
@@ -864,6 +865,9 @@ body.mode-main .item-7 {
     backdrop-filter: blur(10px);
     transition: all 0.3s ease;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+    /* Re-enable clicks for the button itself */
+    pointer-events: auto;
+    cursor: pointer;
 }
 
 .contact-link:hover {
