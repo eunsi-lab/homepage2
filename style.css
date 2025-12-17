@@ -606,6 +606,35 @@ body.mode-main .background-container {
     padding-bottom: 10vh;
 }
 
+.connecting-lines {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    pointer-events: none;
+    overflow: visible;
+}
+
+.connection-path {
+    fill: none;
+    stroke: rgba(255, 255, 255, 0.4);
+    stroke-width: 0.3px;
+    /* Thin, elegant wire */
+    stroke-dasharray: 5 5;
+    /* Dotted line */
+    filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.5));
+    animation: dashFlow 30s linear infinite;
+    vector-effect: non-scaling-stroke;
+}
+
+@keyframes dashFlow {
+    to {
+        stroke-dashoffset: 1000;
+    }
+}
+
 .gallery-title {
     position: absolute;
     top: -15vh;
