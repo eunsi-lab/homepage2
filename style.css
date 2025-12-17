@@ -601,8 +601,8 @@ body.mode-main .background-container {
     perspective: 2000px;
     z-index: 10;
     overflow: visible;
-    padding-bottom: 80vh;
-    /* Extra bottom space */
+    padding-bottom: 180vh;
+    /* SIGNIFICANTLY INCREASED bottom space */
 }
 
 .work-item {
@@ -632,8 +632,9 @@ body.mode-main .background-container {
     animation-play-state: paused;
 }
 
-/* DECORATIVE SPARKLES (Stable) */
-.work-item::before {
+/* DECORATIVE SPARKLES (Stable Double Layer) */
+.work-item::before,
+.work-item::after {
     content: "✦";
     position: absolute;
     font-size: 2.5rem;
@@ -645,6 +646,7 @@ body.mode-main .background-container {
     z-index: 2;
 }
 
+/* Layer 1 Positions (::before) */
 .item-1::before {
     top: -25px;
     right: -25px;
@@ -681,6 +683,60 @@ body.mode-main .background-container {
     bottom: 35%;
     left: -35px;
     color: #e0c3fc;
+}
+
+/* Layer 2 Positions (::after) - NEW EXTRA BLING */
+.item-1::after {
+    bottom: 10%;
+    left: -30px;
+    font-size: 2rem;
+    animation-delay: 1.5s;
+    color: #ffeb3b;
+}
+
+.item-2::after {
+    top: -20px;
+    right: 20px;
+    font-size: 2.2rem;
+    animation-delay: 0.7s;
+}
+
+.item-3::after {
+    bottom: -20px;
+    left: -20px;
+    font-size: 2.8rem;
+    animation-delay: 2s;
+    color: #8ec5fc;
+}
+
+.item-4::after {
+    bottom: 40%;
+    right: -30px;
+    font-size: 1.8rem;
+    animation-delay: 1.2s;
+    color: #e0c3fc;
+}
+
+.item-5::after {
+    top: -25px;
+    left: 30%;
+    font-size: 2.5rem;
+    animation-delay: 0.5s;
+}
+
+.item-6::after {
+    bottom: -15px;
+    right: 10px;
+    font-size: 2rem;
+    animation-delay: 1.8s;
+    color: #ffd700;
+}
+
+.item-7::after {
+    top: -20px;
+    right: -20px;
+    font-size: 2.4rem;
+    animation-delay: 1s;
 }
 
 @keyframes sparkleTwinkle {
