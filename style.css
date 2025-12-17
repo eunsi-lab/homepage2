@@ -541,8 +541,8 @@ body.mode-main {
     /* CRITICAL FIX: Establish positioning context for absolute children */
     overflow-y: auto;
     overflow-x: hidden;
-    /* BRUTE FORCE HEIGHT: Ensuring scrollbar appears */
-    height: 550vh;
+    /* Compact height for closer spacing */
+    height: 400vh;
     min-height: 100vh;
     background: url('bg_holo.png') no-repeat center center fixed;
     background-size: cover;
@@ -597,8 +597,8 @@ body.mode-main .background-container {
     top: 0;
     left: 0;
     width: 100%;
-    /* HARDCODED height to 550vh for balanced spacing (not too wide, not too narrow) */
-    height: 550vh;
+    /* Match body height */
+    height: 400vh;
     margin-top: 30vh;
     perspective: 2000px;
     z-index: 10;
@@ -670,7 +670,8 @@ body.mode-main .background-container {
         0 60px 120px rgba(0, 0, 0, 0.3),
         0 0 40px rgba(100, 200, 255, 0.4),
         inset 0 0 0 1px rgba(255, 255, 255, 0.9);
-    transform: translate3d(0, 0, 300px) rotateX(0) rotateY(0) scale(1.05) !important;
+    /* Make it SIGNIFICANTLY bigger */
+    transform: translate3d(0, 0, 350px) rotateX(0) rotateY(0) scale(1.2) !important;
     animation-play-state: paused;
 }
 
