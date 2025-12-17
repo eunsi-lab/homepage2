@@ -621,8 +621,8 @@ body.mode-main .background-container {
 .connection-path {
     fill: none;
     stroke: rgba(255, 255, 255, 0.4);
-    stroke-width: 0.3px;
-    /* Thin, elegant wire */
+    stroke-width: 2px;
+    /* Visible, elegant wire */
     stroke-dasharray: 5 5;
     /* Dotted line */
     filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.5));
