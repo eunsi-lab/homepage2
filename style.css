@@ -552,6 +552,10 @@ body.mode-main {
     /* Enable scrolling */
     overflow-x: hidden;
     height: auto;
+    /* Clean Studio Background inspired by reference */
+    background: radial-gradient(circle at 50% 30%, #ffffff 0%, #e6efff 100%);
+    background-attachment: fixed;
+    /* Keep background static while scrolling */
 }
 
 body.mode-main #intro-overlay,
@@ -600,12 +604,9 @@ body.mode-greeting .orb {
 }
 
 body.mode-main .orb {
-    /* Fixed background ambiance while scrolling */
-    position: fixed;
-    animation: float 25s infinite ease-in-out;
-    filter: blur(60px);
-    /* Deeper blur for depth */
-    opacity: 0.4;
+    /* Hide orbs in main mode for clean studio look */
+    opacity: 0;
+    display: none;
 }
 
 
@@ -623,7 +624,8 @@ body.mode-main .orb {
     overflow: visible;
     /* Allow 3D elements to pop out without clipping */
     padding-top: 10vh;
-    padding-bottom: 20vh;
+    padding-bottom: 50vh;
+    /* Increased padding to prevent bottom hover clipping */
 }
 
 .work-item {
