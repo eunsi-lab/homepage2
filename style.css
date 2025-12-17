@@ -537,6 +537,8 @@ html {
 }
 
 body.mode-main {
+    position: relative;
+    /* CRITICAL FIX: Establish positioning context for absolute children */
     overflow-y: auto;
     overflow-x: hidden;
     /* BRUTE FORCE HEIGHT: Ensuring scrollbar appears */
