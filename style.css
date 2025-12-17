@@ -622,9 +622,10 @@ body.mode-main .background-container {
     fill: none;
     stroke: rgba(255, 255, 255, 1);
     stroke-width: 4px;
-    /* Bold, highly visible wire */
+    /* Bold width */
     stroke-dasharray: 10 10;
-    /* Dotted line */
+    /* Dotted */
+    opacity: 0.8;
     filter: drop-shadow(0 0 8px rgba(255, 255, 255, 1));
     animation: dashFlow 30s linear infinite;
     vector-effect: non-scaling-stroke;

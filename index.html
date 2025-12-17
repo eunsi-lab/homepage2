@@ -8,11 +8,11 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=47">
+    <link rel="stylesheet" href="style.css?v=49">
 </head>
 
 <body>
-    <!-- Build v47: Maximized Line Visibility -->
+    <!-- Build v49: Spaceship on Dotted Line -->
     <!-- Intro Overlay -->
     <!-- Intro Overlay -->
     <div id="intro-overlay">
@@ -69,9 +69,20 @@
                 <h1 class="gallery-title">Welcome to My Design Station</h1>
 
                 <!-- Connection Lines -->
+                <!-- Connection Lines & Spaceship -->
                 <svg class="connecting-lines" viewBox="0 0 100 100" preserveAspectRatio="none">
-                    <path class="connection-path"
+                    <path id="flight-path" class="connection-path"
                         d="M 20 6 C 50 6, 80 10, 85 16 C 90 22, 50 25, 20 36 C -10 47, 50 45, 85 51 C 120 57, 50 60, 20 66 C -10 72, 50 75, 85 81 C 100 84, 60 88, 50 93" />
+
+                    <!-- Spaceship Sticker -->
+                    <g>
+                        <text x="-3" y="3" font-size="6"
+                            style="filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.8));">🚀</text>
+                        <animateMotion href="#flight-path" dur="12s" repeatCount="indefinite" rotate="auto"
+                            keyPoints="0;1" keyTimes="0;1" calcMode="linear">
+                            <mpath href="#flight-path" />
+                        </animateMotion>
+                    </g>
                 </svg>
 
                 <article class="work-item item-1">
