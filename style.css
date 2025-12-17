@@ -839,7 +839,9 @@ body.mode-main .hero-visuals {
 }
 
 /* DECORATIVE SPARKLES & LINES */
-.work-item::before {
+/* DECORATIVE SPARKLES & LINES */
+.work-item::before,
+.work-item::after {
     content: "✦";
     position: absolute;
     font-size: 2rem;
@@ -849,6 +851,113 @@ body.mode-main .hero-visuals {
     pointer-events: none;
     animation: sparkleTwinkle 3s infinite ease-in-out alternate;
     z-index: 2;
+}
+
+/* First layer sparkles */
+.item-1::before {
+    top: -20px;
+    right: -20px;
+    font-size: 2.5rem;
+    animation-delay: 0s;
+}
+
+.item-2::before {
+    bottom: -30px;
+    left: -20px;
+    font-size: 3rem;
+    animation-delay: 0.5s;
+    color: #ffd700;
+}
+
+.item-3::before {
+    top: 50%;
+    right: -40px;
+    font-size: 2rem;
+    animation-delay: 1s;
+}
+
+.item-4::before {
+    top: -30px;
+    left: 10px;
+    font-size: 2.2rem;
+    animation-delay: 1.5s;
+}
+
+.item-5::before {
+    bottom: 10px;
+    right: -30px;
+    font-size: 1.8rem;
+    animation-delay: 0.2s;
+    color: #8ec5fc;
+}
+
+.item-6::before {
+    top: -10px;
+    right: 50%;
+    font-size: 2.5rem;
+    animation-delay: 0.8s;
+}
+
+.item-7::before {
+    bottom: 30%;
+    left: -30px;
+    font-size: 2.8rem;
+    animation-delay: 1.2s;
+    color: #e0c3fc;
+}
+
+/* Second layer sparkles - DOUBLE PLACEMENT */
+.item-1::after {
+    bottom: 10%;
+    right: 105%;
+    font-size: 1.8rem;
+    animation-delay: 1.2s;
+    color: #ffeb3b;
+}
+
+.item-2::after {
+    top: 110%;
+    right: 10%;
+    font-size: 2.2rem;
+    animation-delay: 2.0s;
+}
+
+.item-3::after {
+    bottom: -20px;
+    left: -20px;
+    font-size: 2.5rem;
+    animation-delay: 0.7s;
+    color: #a0e0fc;
+}
+
+.item-4::after {
+    bottom: 50%;
+    right: -30px;
+    font-size: 1.5rem;
+    animation-delay: 1.8s;
+    color: #e0c3fc;
+}
+
+.item-5::after {
+    top: -40px;
+    left: 40%;
+    font-size: 2.0rem;
+    animation-delay: 1.1s;
+}
+
+.item-6::after {
+    bottom: -20px;
+    left: 110%;
+    font-size: 2.6rem;
+    animation-delay: 0.3s;
+    color: #ff9;
+}
+
+.item-7::after {
+    top: -25px;
+    right: -15px;
+    font-size: 2.4rem;
+    animation-delay: 1.6s;
 }
 
 /* Distinct positions for sparkles */
