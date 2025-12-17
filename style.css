@@ -826,8 +826,8 @@ body.mode-main .item-7 {
 /* CLOSING MESSAGE */
 .closing-message {
     position: absolute;
-    /* Explicitly place BELOW the last item (Item 7 is at ~92% of 650vh = ~598vh) */
-    top: 610vh;
+    /* Explicitly place BELOW the last item (Item 7 is at ~92% of 800vh = ~736vh, so 750vh is safe) */
+    top: 750vh;
     left: 0;
     width: 100%;
     text-align: center;
