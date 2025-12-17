@@ -547,15 +547,20 @@ body.mode-greeting .glass-container {
 }
 
 /* STEP 3: MAIN MODE (WORKS) */
+html {
+    height: 100%;
+    /* Ensure full height base */
+}
+
 body.mode-main {
     overflow-y: auto;
     /* Enable scrolling */
     overflow-x: hidden;
     height: auto;
-    /* Using actual background image with unique name to force load */
+    min-height: 100vh;
+    /* Force background on body specifically */
     background: url('bg_holo.png') no-repeat center center fixed;
     background-size: cover;
-    /* Keep background static while scrolling */
 }
 
 body.mode-main #intro-overlay,
@@ -584,19 +589,16 @@ body.mode-main .glass-container {
     -webkit-backdrop-filter: none;
     transition: opacity 1.2s ease, transform 1.2s cubic-bezier(0.22, 1, 0.36, 1);
     min-height: 100vh;
-    /* Ensure container covers at least viewport */
 }
 
 /* Orb Movements per mode */
 body.mode-intro .orb {
-    /* Fast towards viewer */
     animation: moveTowardsViewer 8s infinite linear;
     opacity: 1;
     filter: blur(0px);
 }
 
 body.mode-greeting .orb {
-    /* Slow down, blur slightly */
     animation: float 20s infinite ease-in-out;
     transition: all 2s ease;
     opacity: 0.5;
@@ -604,7 +606,6 @@ body.mode-greeting .orb {
 }
 
 body.mode-main .orb {
-    /* Hide orbs in main mode for clean studio look */
     opacity: 0;
     display: none;
 }
@@ -613,19 +614,17 @@ body.mode-main .orb {
 /* --- DRAMATIC 3D FLOATING EXHIBITION (SCROLLABLE) --- */
 .works-gallery {
     position: absolute;
-    /* Changed from fixed to absolute for scrolling */
     top: 0;
     left: 0;
     width: 100%;
-    height: 350vh;
-    /* Tall canvas for vertical spreading */
+    /* MASSIVE height for extended scroll */
+    height: 450vh;
     perspective: 2000px;
     z-index: 10;
     overflow: visible;
-    /* Allow 3D elements to pop out without clipping */
-    padding-top: 10vh;
-    padding-bottom: 50vh;
-    /* Increased padding to prevent bottom hover clipping */
+    /* Massive padding for free scrolling at top and bottom */
+    padding-top: 40vh;
+    padding-bottom: 100vh;
 }
 
 .work-item {
