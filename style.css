@@ -552,8 +552,8 @@ body.mode-main {
     /* Enable scrolling */
     overflow-x: hidden;
     height: auto;
-    /* Using actual background image as requested */
-    background: url('background.png') no-repeat center center fixed;
+    /* Using actual background image with unique name to force load */
+    background: url('bg_holo.png') no-repeat center center fixed;
     background-size: cover;
     /* Keep background static while scrolling */
 }
