@@ -46,3 +46,62 @@ document.addEventListener('mousemove', (e) => {
 });
 
 console.log("Antigravity Portfolio: Interactive Flow Initialized");
+
+// --- IMAGE GALLERY LOGIC ---
+let currentImages = [];
+let currentImageIndex = 0;
+const modal = document.getElementById('image-modal');
+const modalImg = document.getElementById('modal-image');
+
+// Make functions global so HTML onclick can access them
+window.openGallery = function (element) {
+    // Parse single quotes correctly using a safer eval or JSON parse if formatted
+    // But since we wrote it as a JS array string in HTML...
+    // Let's rely on the data attribute string which is "['a', 'b']"
+    const rawData = element.getAttribute('data-images');
+    if (!rawData) return;
+
+    // Simple parsing - replacing single quotes to double quotes for JSON.parse
+    // Note: Use strict format in HTML or simple replace here
+    try {
+        const formatted = rawData.replace(/'/g, '"');
+        currentImages = JSON.parse(formatted);
+    } catch (e) {
+        console.error("Error parsing image data", e);
+        // Fallback for simple single file or comma separated
+        currentImages = rawData.split(',').map(s => s.trim().replace(/['"\[\]]/g, ''));
+    }
+
+    if (currentImages.length > 0) {
+        currentImageIndex = 0;
+        showImage(0);
+        modal.classList.add('show');
+        modal.classList.remove('hidden');
+    }
+};
+
+window.closeGallery = function () {
+    modal.classList.remove('show');
+    setTimeout(() => {
+        modal.classList.add('hidden');
+    }, 300); // Wait for transition
+};
+
+window.nextImage = function () {
+    currentImageIndex = (currentImageIndex + 1) % currentImages.length;
+    showImage(currentImageIndex);
+};
+
+function showImage(index) {
+    const imgPath = currentImages[index];
+    modalImg.src = imgPath;
+    // Log for debugging
+    console.log("Showing image:", imgPath);
+}
+
+// Close on outside click
+window.onclick = function (event) {
+    if (event.target == modal) {
+        window.closeGallery();
+    }
+}
