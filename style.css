@@ -601,7 +601,40 @@ body.mode-main .background-container {
     perspective: 2000px;
     z-index: 10;
     overflow: visible;
-    padding-bottom: 250vh;
+    padding-bottom: 10vh;
+}
+
+.gallery-title {
+    position: absolute;
+    top: -15vh;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    font-size: 5rem;
+    font-weight: 700;
+    font-family: var(--font-main);
+    background: linear-gradient(45deg, #fff, #e0c3fc);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    z-index: 50;
+    letter-spacing: 2px;
+    animation: fadeInDown 1.5s ease-out forwards;
+    pointer-events: none;
+    /* Let clicks pass through */
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .work-item {
