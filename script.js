@@ -1,37 +1,48 @@
-// Initialize State
-document.body.classList.add('intro-mode');
+// State Management
+const states = ['mode-intro', 'mode-greeting', 'mode-main'];
+let currentStateIndex = 0;
 
-// Handle Click to Transition
-document.getElementById('intro-overlay').addEventListener('click', () => {
-    document.body.classList.remove('intro-mode');
-    document.body.classList.add('main-mode');
+// Initialize
+document.body.classList.add(states[0]);
+
+// Function to advance state
+function advanceState() {
+    if (currentStateIndex < states.length - 1) {
+        document.body.classList.remove(states[currentStateIndex]);
+        currentStateIndex++;
+        document.body.classList.add(states[currentStateIndex]);
+
+        // Handle specific logic per state
+        if (states[currentStateIndex] === 'mode-greeting') {
+            const greetingOverlay = document.getElementById('greeting-overlay');
+            greetingOverlay.classList.remove('hidden');
+        }
+    }
+}
+
+// Event Listeners
+document.getElementById('intro-overlay').addEventListener('click', (e) => {
+    e.stopPropagation(); // Prevent immediate bubbling if possible
+    advanceState(); // Go to Greeting
 });
 
-// Mouse Movement Effect (Only active when main mode - handled by checking class or basic implementation)
+document.getElementById('greeting-overlay').addEventListener('click', (e) => {
+    advanceState(); // Go to Main
+});
+
+
+// Mouse Movement Effect (Parallax)
 document.addEventListener('mousemove', (e) => {
-    // Only apply parallax if in main mode to avoid conflict with intro animation
-    if (!document.body.classList.contains('main-mode')) return;
+    // Only apply parallax if not in intro mode (save resources)
+    if (currentStateIndex === 0) return;
 
-    const orbs = document.querySelectorAll('.orb');
+    // Apply strict parallax to container
+    const container = document.querySelector('.background-container');
+    const moveX = (window.innerWidth / 2 - e.clientX) * 0.02;
+    const moveY = (window.innerHeight / 2 - e.clientY) * 0.02;
 
-    // Simplier parallax for main mode
-    orbs.forEach((orb, index) => {
-        const speed = (index + 1) * 2; // Slower speed for calm effect
-        const x = (window.innerWidth - e.pageX * speed) / 100;
-        const y = (window.innerHeight - e.pageY * speed) / 100;
-
-        // Note: This transform adds to the CSS animation transform, so we use marginTop/Left or specific transform
-        // For simplicity and compatibility with the 'float' animation, we'll just lightly nudge
-        // But since 'float' uses transform, setting style.transform here will overwrite it!
-        // Better approach: wrap orbs or verify CSS structure. 
-        // For now, let's skip JS parallax on orbs to keep the CSS float animation smooth, 
-        // or apply it to the container. Let's apply it to the container.
-
-        const container = document.querySelector('.background-container');
-        const moveX = (window.innerWidth / 2 - e.clientX) * 0.02;
-        const moveY = (window.innerHeight / 2 - e.clientY) * 0.02;
-        container.style.transform = `translate(${moveX}px, ${moveY}px)`;
-    });
+    // Smooth interaction
+    container.style.transform = `translate(${moveX}px, ${moveY}px)`;
 });
 
-console.log("Antigravity Portfolio: Intro Mode Active");
+console.log("Antigravity Portfolio: Interactive Flow Initialized");

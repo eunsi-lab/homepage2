@@ -237,6 +237,7 @@ body {
     margin-bottom: 1.5rem;
     background: linear-gradient(45deg, #333, #666);
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
@@ -385,6 +386,16 @@ body {
 
 /* --- INTRO & TRANSITIONS --- */
 
+/* Utility for hidden elements */
+.hidden {
+    display: none !important;
+}
+
+.hidden-initially {
+    opacity: 0;
+    pointer-events: none;
+}
+
 /* Intro Overlay */
 #intro-overlay {
     position: fixed;
@@ -392,14 +403,12 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: 9999;
-    /* High Z-index to be on top */
+    z-index: 10000;
     display: flex;
     justify-content: center;
     align-items: center;
     cursor: pointer;
     background: transparent;
-    /* Let orbs show through */
     transition: opacity 0.8s ease;
 }
 
@@ -414,6 +423,74 @@ body {
     animation: pulse 2s infinite;
     user-select: none;
     font-weight: 500;
+}
+
+/* Greeting Overlay */
+#greeting-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.1);
+    /* Subtle dim */
+    backdrop-filter: blur(5px);
+    transition: opacity 1s ease;
+    text-align: center;
+}
+
+.greeting-content h2 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    background: linear-gradient(45deg, #333, #666);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    opacity: 0;
+    animation: fadeInUp 1s forwards 0.3s;
+}
+
+.greeting-content p {
+    font-size: 1.5rem;
+    color: #666;
+    margin-bottom: 2rem;
+    opacity: 0;
+    animation: fadeInUp 1s forwards 0.6s;
+}
+
+.click-hint {
+    font-size: 0.9rem;
+    color: #888;
+    opacity: 0;
+    animation: pulsingFade 2s infinite 1.5s;
+}
+
+@keyframes pulsingFade {
+
+    0%,
+    100% {
+        opacity: 0.4;
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 @keyframes pulse {
@@ -433,56 +510,162 @@ body {
     }
 }
 
-/* Mode Handling */
-body.intro-mode #intro-overlay {
-    pointer-events: auto;
+/* Mode Handling Logic */
+
+/* STEP 1: INTRO MODE */
+body.mode-intro #intro-overlay {
     opacity: 1;
+    pointer-events: auto;
 }
 
-body.main-mode #intro-overlay {
+body.mode-intro #greeting-overlay {
     opacity: 0;
     pointer-events: none;
 }
 
-/* Hide Main Content in Intro Mode */
-body.intro-mode .glass-container {
+body.mode-intro .glass-container {
     opacity: 0;
     transform: scale(0.95);
-    pointer-events: none;
-    transition: none;
-    /* Instant hide initially */
 }
 
-body.main-mode .glass-container {
+/* STEP 2: GREETING MODE */
+body.mode-greeting #intro-overlay {
+    opacity: 0;
+    pointer-events: none;
+}
+
+body.mode-greeting #greeting-overlay {
+    opacity: 1;
+    pointer-events: auto;
+    display: flex !important;
+    /* Override .hidden if JS toggles class */
+}
+
+body.mode-greeting .glass-container {
+    opacity: 0;
+    transform: scale(0.95);
+}
+
+/* STEP 3: MAIN MODE (WORKS) */
+body.mode-main #intro-overlay,
+body.mode-main #greeting-overlay {
+    opacity: 0;
+    pointer-events: none;
+}
+
+body.mode-main .glass-container {
     opacity: 1;
     transform: scale(1);
     pointer-events: auto;
     transition: opacity 1.2s ease, transform 1.2s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-/* Orb State Changes */
-body.intro-mode .orb {
-    /* Orbs come fast towards viewer */
+/* Orb Movements per mode */
+body.mode-intro .orb {
+    /* Fast towards viewer */
     animation: moveTowardsViewer 8s infinite linear;
     opacity: 1;
+    filter: blur(0px);
 }
 
-body.main-mode .orb {
-    /* Orbs slow down and float background */
+body.mode-greeting .orb {
+    /* Slow down, blur slightly */
     animation: float 20s infinite ease-in-out;
-    filter: blur(40px);
-    opacity: 0.6;
+    transition: all 2s ease;
+    opacity: 0.5;
+    filter: blur(10px);
 }
 
-/* Reset animation for main mode to be gentle */
-body.main-mode .orb-1 {
+body.mode-main .orb {
+    /* Background ambiance */
+    animation: float 25s infinite ease-in-out;
+    filter: blur(40px);
+    opacity: 0.3;
+}
+
+
+/* --- NEW WORKS GALLERY (Exhibition Style) --- */
+.works-gallery {
+    position: relative;
+    width: 100%;
+    height: 600px;
+    /* Reduced height to keep it viewable */
+    perspective: 1000px;
+}
+
+.work-item {
+    position: absolute;
+    width: 280px;
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(15px);
+    border-radius: 12px;
+    padding: 1rem;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    cursor: pointer;
+    opacity: 0;
+    /* Fallback for animation entry */
+    animation: floatCard 6s ease-in-out infinite;
+}
+
+/* Specific positions for scattered/floating look */
+.item-1 {
+    top: 5%;
+    left: 5%;
+    transform: rotate(-5deg);
     animation-delay: 0s;
 }
 
-body.main-mode .orb-2 {
-    animation-delay: -5s;
+.item-2 {
+    top: 15%;
+    right: 10%;
+    transform: rotate(3deg);
+    animation-delay: 1.5s;
+    z-index: 2;
 }
 
-body.main-mode .orb-3 {
-    animation-delay: -10s;
+.item-3 {
+    bottom: 10%;
+    left: 20%;
+    transform: rotate(2deg);
+    animation-delay: 0.8s;
 }
+
+.item-4 {
+    bottom: 20%;
+    right: 25%;
+    transform: rotate(-3deg);
+    animation-delay: 2.2s;
+}
+
+/* Hover Effects */
+.work-item:hover {
+    transform: scale(1.1) rotate(0deg) !important;
+    z-index: 10;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+    background: rgba(255, 255, 255, 0.9);
+}
+
+/* Entry Animation for Works */
+body.mode-main .work-item {
+    opacity: 1;
+    /* We could add an entry transition here if desired */
+}
+
+@keyframes floatCard {
+
+    0%,
+    100% {
+        transform: translateY(0) rotate(var(--r, 0deg));
+    }
+
+    50% {
+        transform: translateY(-20px) rotate(var(--r, 0deg));
+    }
+}
+
+/* Set rotation vars for animation loop continuity if needed, 
+   or just hardcode animation values slightly different per item if simple. 
+   Simplifying for now by keeping the hover transform strict. 
+*/
