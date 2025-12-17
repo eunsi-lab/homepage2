@@ -1164,8 +1164,8 @@ body.mode-main .item-7 {
 }
 
 .modal-content {
-    max-width: 80%;
-    max-height: 80%;
+    max-width: 95vw;
+    max-height: 95vh;
     border-radius: 10px;
     box-shadow: 0 0 50px rgba(255, 255, 255, 0.2);
     animation: zoomIn 0.3s ease;
