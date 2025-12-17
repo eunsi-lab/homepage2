@@ -605,8 +605,8 @@ body.mode-greeting .orb {
     filter: blur(10px);
 }
 
-body.mode-main .orb {
-    opacity: 0;
+body.mode-main .background-container {
+    /* Hide the entire container so the body background shows */
     display: none;
 }
 
