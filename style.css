@@ -620,12 +620,12 @@ body.mode-main .background-container {
 
 .connection-path {
     fill: none;
-    stroke: rgba(255, 255, 255, 0.8);
-    stroke-width: 2.5px;
-    /* Visible, elegant wire */
-    stroke-dasharray: 8 8;
+    stroke: rgba(255, 255, 255, 1);
+    stroke-width: 4px;
+    /* Bold, highly visible wire */
+    stroke-dasharray: 10 10;
     /* Dotted line */
-    filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.8));
+    filter: drop-shadow(0 0 8px rgba(255, 255, 255, 1));
     animation: dashFlow 30s linear infinite;
     vector-effect: non-scaling-stroke;
 }
