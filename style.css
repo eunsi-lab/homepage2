@@ -612,19 +612,20 @@ body.mode-main .background-container {
 
 
 /* --- DRAMATIC 3D FLOATING EXHIBITION (SCROLLABLE) --- */
+/* --- DRAMATIC 3D FLOATING EXHIBITION (SCROLLABLE) --- */
 .works-gallery {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
-    /* MASSIVE height for extended scroll */
-    height: 450vh;
+    /* EXTREME height for guaranteed scroll space */
+    height: 600vh;
     perspective: 2000px;
     z-index: 10;
     overflow: visible;
-    /* Massive padding for free scrolling at top and bottom */
-    padding-top: 40vh;
-    padding-bottom: 100vh;
+    /* Massive padding */
+    padding-top: 80vh;
+    padding-bottom: 150vh;
 }
 
 .work-item {
@@ -638,12 +639,9 @@ body.mode-main .background-container {
         20px 20px 60px rgba(0, 0, 0, 0.1),
         inset 0 0 0 1px rgba(255, 255, 255, 0.5);
     border: 1px solid rgba(255, 255, 255, 0.2);
-    border: 1px solid rgba(255, 255, 255, 0.2);
     transform-style: preserve-3d;
     backface-visibility: hidden;
-    /* Fixes jagged edges/flickering */
     will-change: transform;
-    /* Optimizes rendering performance */
     cursor: pointer;
     pointer-events: auto;
     transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1), background 0.3s;
@@ -651,313 +649,63 @@ body.mode-main .background-container {
     flex-direction: column;
 }
 
-.work-item .card-image {
-    flex-grow: 1;
-    background: linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%);
-    border-radius: 20px;
-    margin-bottom: 20px;
-    width: 100%;
-    box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.05);
-}
+/* ... existing styles ... */
 
-.work-item h3 {
-    margin: 0;
-    font-size: 1.8rem;
-    color: #222;
-    font-weight: 700;
-}
-
-.work-item p {
-    font-size: 1.1rem;
-    color: #555;
-    margin-top: 5px;
-}
-
-/* Hide Hero Content in Main Mode as well */
-body.mode-main .hero-content,
-body.mode-main .hero-visuals {
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.5s ease;
-}
-
-/* --- ZIG-ZAG VERTICAL DISTRIBUTION --- */
-
-/* 1. Top Left */
-.item-1 {
-    width: 450px;
-    height: 320px;
-    top: 5%;
-    left: 10%;
-    transform: rotateY(35deg) rotateX(15deg) translateZ(0);
-    animation: drift1 14s ease-in-out infinite alternate;
-}
-
-@keyframes drift1 {
-    0% {
-        transform: translate3d(0, 0, 0) rotateY(35deg) rotateX(15deg);
-    }
-
-    100% {
-        transform: translate3d(30px, -30px, 40px) rotateY(30deg) rotateX(10deg);
-    }
-}
-
-/* 2. Top Right - Huge */
-.item-2 {
-    width: 550px;
-    height: 400px;
-    top: 15%;
-    right: 8%;
-    transform: rotateY(-35deg) rotateX(10deg) translateZ(-50px);
-    animation: drift2 18s ease-in-out infinite alternate-reverse;
-}
-
-@keyframes drift2 {
-    0% {
-        transform: translate3d(0, 0, -50px) rotateY(-35deg) rotateX(10deg);
-    }
-
-    100% {
-        transform: translate3d(-40px, -40px, 0px) rotateY(-40deg) rotateX(5deg);
-    }
-}
-
-/* 3. Mid Left - Vertical */
-.item-3 {
-    width: 350px;
-    height: 500px;
-    top: 35%;
-    left: 8%;
-    transform: rotateY(25deg) rotateX(-15deg) translateZ(50px);
-    animation: drift3 16s ease-in-out infinite alternate;
-}
-
-@keyframes drift3 {
-    0% {
-        transform: translate3d(0, 0, 50px) rotateY(25deg) rotateX(-15deg);
-    }
-
-    100% {
-        transform: translate3d(30px, 30px, 80px) rotateY(30deg) rotateX(-10deg);
-    }
-}
-
-/* 4. Mid Right - Wide */
-.item-4 {
-    width: 500px;
-    height: 320px;
-    top: 50%;
-    right: 12%;
-    transform: rotateY(-25deg) rotateX(-10deg) translateZ(-20px);
-    animation: drift4 20s ease-in-out infinite alternate-reverse;
-}
-
-@keyframes drift4 {
-    0% {
-        transform: translate3d(0, 0, -20px) rotateY(-25deg) rotateX(-10deg);
-    }
-
-    100% {
-        transform: translate3d(-30px, 30px, 20px) rotateY(-20deg) rotateX(-5deg);
-    }
-}
-
-/* 5. Lower Left - Deep */
-.item-5 {
-    width: 400px;
-    height: 300px;
-    top: 65%;
-    left: 15%;
-    transform: rotateY(15deg) rotateX(25deg) translateZ(-150px);
-    animation: drift5 22s ease-in-out infinite alternate;
-}
-
-@keyframes drift5 {
-    0% {
-        transform: translate3d(0, 0, -150px) rotateY(15deg) rotateX(25deg);
-    }
-
-    100% {
-        transform: translate3d(0, 50px, -100px) rotateY(20deg) rotateX(20deg);
-    }
-}
-
-/* 6. Lower Right - Upward */
-.item-6 {
-    width: 380px;
-    height: 350px;
-    top: 80%;
-    right: 10%;
-    transform: rotateY(-20deg) rotateX(-20deg) translateZ(20px);
-    animation: drift6 17s ease-in-out infinite alternate-reverse;
-}
-
-@keyframes drift6 {
-    0% {
-        transform: translate3d(0, 0, 20px) rotateY(-20deg) rotateX(-20deg);
-    }
-
-    100% {
-        transform: translate3d(-40px, -40px, 60px) rotateY(-15deg) rotateX(-15deg);
-    }
-}
-
-/* 7. Bottom Center - Final */
-.item-7 {
-    width: 450px;
-    height: 350px;
-    top: 92%;
-    left: 50%;
-    margin-left: -225px;
-    transform: rotateY(0deg) rotateX(15deg) translateZ(-50px);
-    animation: drift7 19s ease-in-out infinite alternate;
-}
-
-@keyframes drift7 {
-    0% {
-        transform: translate3d(0, 0, -50px) rotateY(0deg) rotateX(15deg);
-    }
-
-    100% {
-        transform: translate3d(0px, -30px, 0px) rotateY(5deg) rotateX(10deg);
-    }
-}
-
-
-/* HOVER: Focus effect - Bring VERY close */
-.work-item:hover {
-    z-index: 5000;
-    /* Super high z-index to fly over everything */
-    background: rgba(255, 255, 255, 0.98);
-    box-shadow:
-        0 60px 120px rgba(0, 0, 0, 0.3),
-        inset 0 0 0 1px rgba(255, 255, 255, 0.9);
-    /* straighten out to face user, reduced Z to prevent clipping/distortion glitches */
-    transform: translate3d(0, 0, 300px) rotateX(0) rotateY(0) scale(1.05) !important;
-    animation-play-state: paused;
-}
-
-/* DECORATIVE SPARKLES & LINES */
-/* DECORATIVE SPARKLES & LINES */
-.work-item::before,
-.work-item::after {
-    content: "✦";
+/* NEW SPARKLE SYSTEM VIA HTML */
+.sparkles {
     position: absolute;
-    font-size: 2rem;
-    color: #fff;
-    text-shadow: 0 0 10px rgba(142, 197, 252, 0.8), 0 0 20px rgba(224, 195, 252, 0.8);
-    opacity: 0.8;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     pointer-events: none;
-    animation: sparkleTwinkle 3s infinite ease-in-out alternate;
-    z-index: 2;
+    z-index: 10;
 }
 
-/* First layer sparkles */
-.item-1::before {
-    top: -20px;
-    right: -20px;
-    font-size: 2.5rem;
+.sparkles span {
+    position: absolute;
+    color: #fff;
+    font-size: 20px;
+    animation: sparkleTwinkle 2s infinite ease-in-out alternate;
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.9);
+}
+
+.s1 {
+    top: -30px;
+    left: -20px;
+    font-size: 3rem;
+    color: #fff;
     animation-delay: 0s;
 }
 
-.item-2::before {
-    bottom: -30px;
-    left: -20px;
-    font-size: 3rem;
-    animation-delay: 0.5s;
+.s2 {
+    top: 40%;
+    right: -40px;
+    font-size: 2.2rem;
     color: #ffd700;
+    animation-delay: 0.5s;
 }
 
-.item-3::before {
-    top: 50%;
-    right: -40px;
-    font-size: 2rem;
+.s3 {
+    bottom: -30px;
+    left: 20%;
+    font-size: 2.5rem;
+    color: #a0e0fc;
     animation-delay: 1s;
 }
 
-.item-4::before {
-    top: -30px;
-    left: 10px;
-    font-size: 2.2rem;
+.s4 {
+    top: -20px;
+    right: 20%;
+    font-size: 1.8rem;
+    color: #ff9a9e;
     animation-delay: 1.5s;
 }
 
-.item-5::before {
-    bottom: 10px;
-    right: -30px;
-    font-size: 1.8rem;
-    animation-delay: 0.2s;
-    color: #8ec5fc;
-}
-
-.item-6::before {
-    top: -10px;
-    right: 50%;
-    font-size: 2.5rem;
-    animation-delay: 0.8s;
-}
-
-.item-7::before {
-    bottom: 30%;
-    left: -30px;
-    font-size: 2.8rem;
-    animation-delay: 1.2s;
-    color: #e0c3fc;
-}
-
-/* Second layer sparkles - DOUBLE PLACEMENT */
-.item-1::after {
-    bottom: 10%;
-    right: 105%;
-    font-size: 1.8rem;
-    animation-delay: 1.2s;
-    color: #ffeb3b;
-}
-
-.item-2::after {
-    top: 110%;
-    right: 10%;
-    font-size: 2.2rem;
-    animation-delay: 2.0s;
-}
-
-.item-3::after {
-    bottom: -20px;
-    left: -20px;
-    font-size: 2.5rem;
-    animation-delay: 0.7s;
-    color: #a0e0fc;
-}
-
-.item-4::after {
-    bottom: 50%;
-    right: -30px;
-    font-size: 1.5rem;
-    animation-delay: 1.8s;
-    color: #e0c3fc;
-}
-
-.item-5::after {
-    top: -40px;
-    left: 40%;
-    font-size: 2.0rem;
-    animation-delay: 1.1s;
-}
-
-.item-6::after {
-    bottom: -20px;
-    left: 110%;
-    font-size: 2.6rem;
-    animation-delay: 0.3s;
-    color: #ff9;
-}
-
-.item-7::after {
-    top: -25px;
-    right: -15px;
-    font-size: 2.4rem;
-    animation-delay: 1.6s;
+/* Remove old pseudo elements to avoid clutter */
+.work-item::before,
+.work-item::after {
+    display: none;
 }
 
 /* Distinct positions for sparkles */
